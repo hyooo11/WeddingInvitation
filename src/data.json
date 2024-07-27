@@ -1,0 +1,58 @@
+{
+  "greeting": {
+    "title": "박진희 노동현 결혼합니다.",
+    "message": "저희 두 사람, 하나가 되어 평생을 함께 걸어 가고자 합니다. 자리에 오셔서 새로운 시작을 축복해 주세요."
+  },
+  "hostInfo": [
+    {
+      "host": "신랑측",
+      "accountInfo": [
+        {
+          "name": "노동현",
+          "relation": "신랑",
+          "bank": "카카오뱅크",
+          "account": "1234-56-789012",
+          "kakaopayAccount": "",
+          "tossAccount": ""
+        },
+        {
+          "name": "노아빠",
+          "relation": "아버님",
+          "bank": "농협",
+          "account": "123-45-678901"
+        },
+        {
+          "name": "노엄마",
+          "relation": "어머님",
+          "bank": "농협",
+          "account": "123-45-678901"
+        }
+      ]
+    },
+    {
+      "host": "신부측",
+      "accountInfo": [
+        {
+          "name": "박진희",
+          "relation": "신부",
+          "bank": "토스뱅크",
+          "account": "1234-5678-9012",
+          "kakaopayAccount": "",
+          "tossAccount": ""
+        },
+        {
+          "name": "박아빠",
+          "relation": "아버님",
+          "bank": "농협",
+          "account": "123-45-678901"
+        },
+        {
+          "name": "박엄마",
+          "relation": "어머님",
+          "bank": "농협",
+          "account": "123-45-678901"
+        }
+      ]
+    }
+  ]
+}
