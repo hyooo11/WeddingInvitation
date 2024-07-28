@@ -21,7 +21,7 @@ export default function Home() {
       <div className="h2">신랑 신부에게</div>
       <GuestBookList />
       <GuestBookForm />
-      <h2>마음 전하실 곳</h2>
+      <div className="h2">마음 전하실 곳</div>
       <Account />
       <h2>링크공유</h2>
     </div>
