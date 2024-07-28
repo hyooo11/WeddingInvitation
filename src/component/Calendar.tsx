@@ -8,7 +8,6 @@ import {
   startOfWeek,
   endOfWeek,
   eachDayOfInterval,
-  addDays,
   isSaturday,
   isSunday,
   differenceInDays,
@@ -44,12 +43,12 @@ const Calendar = () => {
   }));
 
   // 실시간 업데이트를 위한 useEffect
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setCurrentDate(new Date());
-  //   }, 1000);
-  //   return () => clearInterval(timer); // 컴포넌트 언마운트 시 타이머 제거
-  // }, []);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentDate(new Date());
+    }, 1000);
+    return () => clearInterval(timer); // 컴포넌트 언마운트 시 타이머 제거
+  }, []);
 
   const daysRemaining = differenceInDays(targetDate, currentDate);
   const hoursRemaining = differenceInHours(

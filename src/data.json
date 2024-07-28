@@ -8,6 +8,14 @@
     "title": "초대합니다.",
     "message": "저희 두 사람, 하나가 되어 평생을 함께 걸어 가고자 합니다. 자리에 오셔서 새로운 시작을 축복해 주세요."
   },
+  "gallery": [
+    "/gallery01.jpg",
+    "/gallery02.jpg",
+    "/gallery03.jpg",
+    "/gallery04.jpg",
+    "/gallery05.jpg",
+    "/gallery06.jpg"
+  ],
   "hostInfo": [
     {
       "host": "신랑측",
