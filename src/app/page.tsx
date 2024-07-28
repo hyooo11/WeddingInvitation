@@ -1,15 +1,15 @@
 import dynamic from "next/dynamic";
-import Main from "@/component/Main";
-const Calendar = dynamic(() => import("@/component/Calendar"), {
+import Main from "@/layout/Main";
+const Calendar = dynamic(() => import("@/layout/Calendar"), {
   ssr: false,
 });
-import Gallery from "@/component/Gallery";
-const Location = dynamic(() => import("@/component/Location"), {
+import Gallery from "@/layout/Gallery";
+const Location = dynamic(() => import("@/layout/Location"), {
   ssr: false,
 });
-import Account from "@/component/Account";
-import GuestBookForm from "@/component/GuestBookForm";
-import GuestBookList from "@/component/GuestBookList";
+import Account from "@/layout/Account";
+import GuestBookList from "@/layout/GuestBookList";
+import GuestBookForm from "@/layout/GuestBookForm";
 
 export default function Home() {
   return (
@@ -18,9 +18,9 @@ export default function Home() {
       <Calendar />
       <Gallery />
       <Location />
-      <h2>신랑 신부에게-방명록</h2>
-      <GuestBookForm />
+      <div className="h2">신랑 신부에게</div>
       <GuestBookList />
+      <GuestBookForm />
       <h2>마음 전하실 곳</h2>
       <Account />
       <h2>링크공유</h2>

@@ -1,9 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import { getGeoCode } from "@/api/GeoCodeAPI";
+import Button from "@/components/Button";
 import CopyToClipboard from "@/util/CopyToClipboard";
+import data from "@/data.json";
 
-const Map = () => {
+const Location = () => {
   const [lat, setLat] = useState<number>();
   const [lng, setLng] = useState<number>();
 
@@ -32,21 +34,19 @@ const Map = () => {
   };
 
   return (
-    <div>
-      <h2>오시는 길</h2>
-
+    <div className="Location">
+      <div className="h2">
+        <div className="inner">오시는 길</div>
+      </div>
       <div id="map" style={{ height: "200px" }}></div>
-      <div>
-        <button onClick={openMapNaver}>네이버 지도에서 보기</button>
-        <button>카카오맵에서 보기</button>
-      </div>
-      <div>
-        <p>MJ컨벤션 웨딩홀</p>
-        <CopyToClipboard text="경기도 부천시 소사구 소사본동 65-7(경인로 386)" />
-        <div>길안내 담당자한테 전화걸기</div>
-      </div>
-      <div className="directions">
-        <ul>
+      <Button text={"네이버 지도에서 보기"} onClick={openMapNaver} />
+      <div className="inner">
+        <div className="location_info">
+          <p className="location_name">{data.weddingInfo.locationName}</p>
+          <CopyToClipboard text="경기도 부천시 소사구 소사본동 65-7(경인로 386)" />
+          <div>길안내 담당자한테 전화걸기</div>
+        </div>
+        <ul className="desc">
           <li>
             <h3>지하철 이용 시</h3>
             <span>1호선, 서해선 &gt; 소사역 1번출구 건너편 좌측(70m)</span>
@@ -69,4 +69,4 @@ const Map = () => {
   );
 };
 
-export default Map;
+export default Location;

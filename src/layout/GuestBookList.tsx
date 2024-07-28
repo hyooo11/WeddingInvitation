@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { database } from "../firebase";
 import { ref, onValue } from "firebase/database";
+import Marquee from "react-fast-marquee";
 
 interface GuestBook {
   nickName: string;
@@ -25,13 +26,16 @@ const GuestbookList = () => {
   }, []);
 
   return (
-    <ul>
-      {messages.map((message) => (
-        <li key={message.id}>
-          <strong>{message.nickName}</strong>: {message.message}
-        </li>
-      ))}
-    </ul>
+    <div className="GuestbookList">
+      <Marquee>
+        {messages.map((message) => (
+          <li key={message.id}>
+            <p>{message.message}</p>
+            <p>- {message.nickName} -</p>
+          </li>
+        ))}
+      </Marquee>
+    </div>
   );
 };
 

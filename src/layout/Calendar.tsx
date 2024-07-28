@@ -21,7 +21,8 @@ const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date()); // 현재 날짜
   const [targetDate, setTargetDate] = useState(new Date(data.weddingInfo.date)); //결혼식 디데이
 
-  const dDay = format(targetDate, "yyyy년 MM월 dd일");
+  const title = format(targetDate, "MM월 dd일");
+  const dDay = format(targetDate, "yyyy년 MM월 dd일 p");
 
   const monthStart = startOfMonth(targetDate); // 현재 달의 시작 날짜 (2023-08-01)
   const monthEnd = endOfMonth(monthStart); // 현재 달의 마지막 날짜 (2023-08-31)
@@ -72,39 +73,41 @@ const Calendar = () => {
 
   return (
     <div className="Calendar">
-      <div className="title">{dDay}</div>
-      <div>
-        <div className="week">
-          {week.map((data, index) => {
-            return <span key={index}>{data}</span>;
-          })}
+      <div className="inner">
+        <div className="h2">{title}</div>
+        <div>
+          <div className="week">
+            {week.map((data, index) => {
+              return <span key={index}>{data}</span>;
+            })}
+          </div>
+          <div className="day">
+            {daysInMonth.map((data, index) => {
+              return (
+                <span
+                  className={
+                    data.isDDay
+                      ? "dday"
+                      : data.rest
+                      ? "rest"
+                      : data.issunday
+                      ? "sun"
+                      : data.isSaturday
+                      ? "satur"
+                      : "default"
+                  }
+                  key={index}
+                >
+                  {data.day}
+                </span>
+              );
+            })}
+          </div>
         </div>
-        <div className="day">
-          {daysInMonth.map((data, index) => {
-            return (
-              <span
-                className={
-                  data.isDDay
-                    ? "dday"
-                    : data.rest
-                    ? "rest"
-                    : data.issunday
-                    ? "sun"
-                    : data.isSaturday
-                    ? "satur"
-                    : "default"
-                }
-                key={index}
-              >
-                {data.day}
-              </span>
-            );
-          })}
+        <div>
+          <div>{dDay}</div>
+          <div>동현❤️진희의 결혼식이 {count} 남았습니다.</div>
         </div>
-      </div>
-      <div>
-        <div>{dDay}</div>
-        <div>동현❤️진희의 결혼식이 {count} 남았습니다.</div>
       </div>
     </div>
   );

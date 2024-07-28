@@ -19,14 +19,14 @@ import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 const Gallery = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
   return (
-    <div>
+    <div className="Gallery">
       <Swiper
         loop={true}
         spaceBetween={10}
         // navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2"
+        className="MainSwiper"
       >
         {data.gallery.map((data, index) => {
           return (
@@ -44,7 +44,7 @@ const Gallery = () => {
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper"
+        className="SubSwiper"
       >
         {data.gallery.map((data, index) => {
           return (

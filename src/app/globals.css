@@ -8,16 +8,30 @@
     --primary: #ff7d29;
     --secondary: #ffbf78;
     --bg-color: #feffd2;
+    --bg-gray: #efefef;
   }
+}
+html {
+  font-size: 14px;
 }
 
 body {
   background-color: var(--bg-color);
+  white-space: pre-wrap;
 }
 .Wrapper {
   max-width: 780px;
   margin: 0 auto;
   background-color: #fff;
+}
+.inner {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.h2 {
+  color: var(--primary);
+  font-size: 1.25rem;
+  padding-bottom: 1rem;
 }
 
 /* Main */
@@ -42,7 +56,9 @@ body {
 
 /* Calendar */
 .Calendar {
+  padding: 3rem 0;
   text-align: center;
+  background-color: var(--bg-gray);
 }
 .Calendar .week {
   display: flex;
@@ -54,7 +70,6 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
-
 .Calendar .day > span {
   width: 14.28%;
 }
@@ -72,5 +87,67 @@ body {
 }
 .Calendar .day > span.dday {
   background-color: red;
+  color: #fff;
+}
+
+/* Gallery */
+.Gallery .swiper-slide {
+  overflow: hidden;
+}
+.Gallery .MainSwiper .swiper-slide {
+  padding-top: 100%;
+}
+.Gallery .SubSwiper .swiper-slide {
+  padding-top: 20%;
+}
+.Gallery .swiper-slide img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Location */
+.Location {
+  padding: 3rem 0;
+}
+.location_info {
+  padding: 3rem 0;
+}
+.location_info .location_name {
+  font-size: 1.2rem;
+}
+.desc h3 {
+  color: var(--secondary);
+}
+.desc li span {
+  display: block;
+}
+
+/* GuestbookList */
+.GuestbookList li {
+  width: 100px;
+  background-color: #fcf8e3;
+  list-style: none;
+  text-align: center;
+  padding: 3rem 0;
+  margin: 0 1rem;
+}
+/* GuestbookForm */
+.GuestbookForm .input_box {
+  padding: 0.5rem;
+  border: 1px solid #efefef;
+  border-radius: 5px;
+}
+
+/* Button */
+.btn-area {
+  display: flex;
+  gap: 5px;
+}
+.Button {
+  width: 100%;
+  padding: 1rem 0;
+  background-color: var(--primary);
   color: #fff;
 }
