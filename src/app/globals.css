@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 색상 ≠템플릿 */
+@layer base {
+  :root {
+    --primary: #ff7d29;
+    --secondary: #ffbf78;
+    --bg-color: #feffd2;
+  }
+}
+
+body {
+  background-color: var(--bg-color);
+}
+.Wrapper {
+  max-width: 780px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+/* Main */
+.Main .banner {
+  position: relative;
+  padding-top: 100%;
+  overflow: hidden;
+}
+.Main .banner img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.Main .greeting {
+  padding: 4rem 0;
+  text-align: center;
+}
+.Main .greeting .title {
+  font-size: 1.23rem;
+}
+
+/* Calendar */
+.Calendar {
+  text-align: center;
+}
+.Calendar .week {
+  display: flex;
+}
+.Calendar .week > span {
+  width: 100%;
+}
+.Calendar .day {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Calendar .day > span {
+  width: 14.28%;
+}
+.Calendar .day > span.rest {
+  color: #efefef;
+}
+.Calendar .day > span.sun {
+  color: red;
+}
+.Calendar .day > span.satur {
+  color: blue;
+}
+.Calendar .day > span.default {
+  color: #333;
+}
+.Calendar .day > span.dday {
+  background-color: red;
+  color: #fff;
+}
