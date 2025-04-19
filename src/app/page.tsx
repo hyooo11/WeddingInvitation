@@ -26,7 +26,7 @@ export default function Home() {
         <p className="tit">마음 전하실 곳</p>
       </div>
       <Account />
-      <h2>링크공유</h2>
+      {/* <h2>링크공유</h2> */}
     </div>
   );
 }
