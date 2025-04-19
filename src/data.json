@@ -1,21 +1,22 @@
 {
   "weddingInfo": {
-    "bannerImg": "/dummy.jpg",
-    "date": "2025-06-28T14:00:00",
+    "bannerImg": "/main_visual.jpeg",
+    "date": "2025-06-28T12:40:00",
     "locationName": "MJ컨벤션 웨딩홀",
     "location": "경기도 부천시 소사구 소사본동 65-7(경인로 386)"
   },
   "greeting": {
     "title": "초대합니다.",
-    "message": "저희 두 사람, 하나가 되어 평생을 함께 걸어 가고자 합니다.\n 자리에 오셔서 새로운 시작을 축복해 주세요."
+    "message": "다른 길을 걸어오던 두 사람이\n이제 같은 방향을 바라보며 나아가려고 합니다.\n저희의 하루하루가 더 빛나고,\n더 따뜻해지기를 바랍니다.\n그 첫 순간에 여러분이 함께 한다면\n더할나위 없는 선물일 것 같습니다.\n오셔서 축복과 격려해 주시면 감사하겠습니다."
   },
   "gallery": [
-    "/gallery01.jpg",
-    "/gallery02.jpg",
-    "/gallery03.jpg",
-    "/gallery04.jpg",
-    "/gallery05.jpg",
-    "/gallery06.jpg"
+    "/g_1.jpeg",
+    "/g_2.jpeg",
+    "/g_3.jpeg",
+    "/g_4.jpeg",
+    "/g_5.jpeg",
+    "/g_6.jpeg",
+    "/g_7.jpeg"
   ],
   "hostInfo": [
     {
@@ -24,24 +25,22 @@
         {
           "name": "노동현",
           "relation": "신랑",
-          "bank": "카카오뱅크",
-          "account": "1234-56-789012",
-          "kakaopayAccount": "",
-          "tossAccount": "",
+          "bank": "신한은행",
+          "account": "110411883134",
           "phone": "01000000000"
         },
         {
-          "name": "노아빠",
+          "name": "노희승",
           "relation": "아버님",
-          "bank": "농협",
-          "account": "123-45-678901",
+          "bank": "국민은행",
+          "account": "879601-01-079880",
           "phone": "01000000000"
         },
         {
-          "name": "노엄마",
+          "name": "엄희자",
           "relation": "어머님",
-          "bank": "농협",
-          "account": "123-45-678901",
+          "bank": "국민은행",
+          "account": "429501-01-016086",
           "phone": "01000000000"
         }
       ]
@@ -52,24 +51,22 @@
         {
           "name": "박진희",
           "relation": "신부",
-          "bank": "토스뱅크",
-          "account": "1234-5678-9012",
-          "kakaopayAccount": "",
-          "tossAccount": "",
+          "bank": "국민은행",
+          "account": "31800204175029",
           "phone": "01000000000"
         },
         {
-          "name": "박아빠",
+          "name": "박병국",
           "relation": "아버님",
-          "bank": "농협",
-          "account": "123-45-678901",
+          "bank": "기업은행",
+          "account": "29603122903011",
           "phone": "01000000000"
         },
         {
-          "name": "박엄마",
+          "name": "최정희",
           "relation": "어머님",
-          "bank": "농협",
-          "account": "123-45-678901",
+          "bank": "국민은행",
+          "account": "801210474217",
           "phone": "01000000000"
         }
       ]

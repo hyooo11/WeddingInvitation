@@ -20,40 +20,47 @@ const Gallery = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
   return (
     <div className="Gallery">
-      <Swiper
-        loop={true}
-        spaceBetween={10}
-        // navigation={true}
-        thumbs={{ swiper: thumbsSwiper }}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className="MainSwiper"
-      >
-        {data.gallery.map((data, index) => {
-          return (
-            <SwiperSlide key={index}>
-              <img src={data} />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
-      <Swiper
-        onSwiper={setThumbsSwiper}
-        loop={true}
-        spaceBetween={10}
-        slidesPerView={4}
-        freeMode={true}
-        watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className="SubSwiper"
-      >
-        {data.gallery.map((data, index) => {
-          return (
-            <SwiperSlide key={index}>
-              <img src={data} />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+      <div className="inner">
+        <div className="h2">
+          <p className="eng">gallery</p>
+          <p className="tit">갤러리</p>
+        </div>
+        <Swiper
+          loop={true}
+          spaceBetween={10}
+          // navigation={true}
+          thumbs={{ swiper: thumbsSwiper }}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className="MainSwiper"
+        >
+          {data.gallery.map((data, index) => {
+            return (
+              <SwiperSlide key={index}>
+                <img src={data} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+
+        <Swiper
+          onSwiper={setThumbsSwiper}
+          loop={true}
+          spaceBetween={5}
+          slidesPerView={4}
+          freeMode={true}
+          watchSlidesProgress={true}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className="SubSwiper"
+        >
+          {data.gallery.map((data, index) => {
+            return (
+              <SwiperSlide key={index}>
+                <img src={data} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
     </div>
   );
 };

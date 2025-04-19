@@ -1,5 +1,7 @@
 "use client";
 import React, { ReactNode, useState } from "react";
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
 
 interface AccordionProps {
   children: ReactNode;
@@ -7,47 +9,30 @@ interface AccordionProps {
 
 interface AccordionItemProps {
   title: string;
-  isOpen?: boolean;
-  onToggle?: () => void;
   children: ReactNode;
 }
 
 export const Accordion: React.FC<AccordionProps> = ({ children }) => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const handleToggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  return (
-    <div>
-      {React.Children.map(children, (child, index) =>
-        React.isValidElement(child) && child.type === AccordionItem
-          ? React.cloneElement(
-              child as React.ReactElement<AccordionItemProps>,
-              {
-                isOpen: openIndex === index,
-                onToggle: () => handleToggle(index),
-              }
-            )
-          : child
-      )}
-    </div>
-  );
+  return <div className="Accordion">{children}</div>;
 };
 
-export const AccordionItem: React.FC<AccordionItemProps> = ({
-  title,
-  isOpen,
-  onToggle,
-  children,
-}) => {
+export const AccordionItem: React.FC<AccordionItemProps> = ({ title, children }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggle = () => setIsOpen(!isOpen);
+
   return (
-    <div>
-      <button onClick={onToggle} style={{ display: "block", width: "100%" }}>
-        {title}
+    <div className="AccordionItem">
+      <button
+        className="btn "
+        onClick={handleToggle}
+      >
+        <span>{title}</span>
+        {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
       </button>
-      {isOpen && <div>{children}</div>}
+      <div className={`item_panel ${isOpen ? "open" : ""}`}>
+        {children}
+      </div>
     </div>
   );
 };

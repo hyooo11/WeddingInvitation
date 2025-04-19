@@ -16,13 +16,16 @@ import {
   differenceInSeconds,
   sub,
 } from "date-fns";
+import { ko } from "date-fns/locale";
+import { FaHeart } from "react-icons/fa6";
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date()); // 현재 날짜
   const [targetDate, setTargetDate] = useState(new Date(data.weddingInfo.date)); //결혼식 디데이
+  const [count, setCount] = useState('')
 
-  const title = format(targetDate, "MM월 dd일");
-  const dDay = format(targetDate, "yyyy년 MM월 dd일 p");
+  const dday = format(targetDate, `yyyy. MM. dd`);
+  const time = format(targetDate, `a h시 m분`, { locale: ko });
 
   const monthStart = startOfMonth(targetDate); // 현재 달의 시작 날짜 (2023-08-01)
   const monthEnd = endOfMonth(monthStart); // 현재 달의 마지막 날짜 (2023-08-31)
@@ -69,16 +72,26 @@ const Calendar = () => {
     currentDate
   );
 
-  const count = `${daysRemaining}일 ${hoursRemaining}시간 ${minutesRemaining}분 ${secondsRemaining}초`;
+
+
+  useEffect(() => {
+    setCount(`${daysRemaining}일 ${hoursRemaining}시간 ${minutesRemaining}분 ${secondsRemaining}초`)
+  }, [daysRemaining, hoursRemaining, minutesRemaining, secondsRemaining])
+
+
 
   return (
     <div className="Calendar">
       <div className="inner">
-        <div className="h2">{title}</div>
-        <div>
+        <div className="title">
+          <p className="dday">{dday}</p>
+          <p className="time">{time}</p>
+        </div>
+
+        <div className="body">
           <div className="week">
             {week.map((data, index) => {
-              return <span key={index}>{data}</span>;
+              return <span key={index} className={data === '일' ? 'sun' : ''}>{data}</span>;
             })}
           </div>
           <div className="day">
@@ -89,12 +102,12 @@ const Calendar = () => {
                     data.isDDay
                       ? "dday"
                       : data.rest
-                      ? "rest"
-                      : data.issunday
-                      ? "sun"
-                      : data.isSaturday
-                      ? "satur"
-                      : "default"
+                        ? "rest"
+                        : data.issunday
+                          ? "sun"
+                          : data.isSaturday
+                            ? "satur"
+                            : "default"
                   }
                   key={index}
                 >
@@ -105,8 +118,30 @@ const Calendar = () => {
           </div>
         </div>
         <div>
-          <div>{dDay}</div>
-          <div>동현❤️진희의 결혼식이 {count} 남았습니다.</div>
+          <div className="time_panel">
+            <div className="item">
+              <p className="num">{daysRemaining}</p>
+              <p className="txt">Days</p>
+            </div>
+            <span>:</span>
+            <div className="item">
+              <p className="num">{hoursRemaining}</p>
+              <p className="txt">Hour</p>
+            </div>
+            <span>:</span>
+            <div className="item">
+              <p className="num">{minutesRemaining}</p>
+              <p className="txt">Min</p>
+            </div>
+            <span>:</span>
+            <div className="item">
+              <p className="num">{secondsRemaining}</p>
+              <p className="txt">Sec</p>
+            </div>
+          </div>
+          <div className="dday_text">
+            동현<FaHeart />진희의 결혼식이 {daysRemaining}일 남았습니다.
+          </div>
         </div>
       </div>
     </div>

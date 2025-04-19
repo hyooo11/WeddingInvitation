@@ -35,17 +35,17 @@ const Location = () => {
 
   return (
     <div className="Location">
-      <div className="h2">
-        <div className="inner">오시는 길</div>
+      <div className="inner">
+        <div className="h2">
+          <p className="eng">location</p>
+          <p className="tit">오시는 길</p>
+        </div>
+        <p className="hollymolly">MJ컨벤션 3층 다이너스티홀</p>
+        <CopyToClipboard text="경기도 부천시 소사구 소사본동 65-7(경인로 386)" />
       </div>
       <div id="map" style={{ height: "200px" }}></div>
-      <Button text={"네이버 지도에서 보기"} onClick={openMapNaver} />
+      <Button type="button" text={"네이버 지도에서 보기"} onClick={openMapNaver} />
       <div className="inner">
-        <div className="location_info">
-          <p className="location_name">{data.weddingInfo.locationName}</p>
-          <CopyToClipboard text="경기도 부천시 소사구 소사본동 65-7(경인로 386)" />
-          <div>길안내 담당자한테 전화걸기</div>
-        </div>
         <ul className="desc">
           <li>
             <h3>지하철 이용 시</h3>

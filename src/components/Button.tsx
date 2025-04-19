@@ -1,10 +1,10 @@
 type Props = {
   text: string;
-  style?: string;
   onClick?: () => void;
+  type: 'submit' | 'button'
 };
 
-const Button = ({ text, onClick, style }: Props) => {
+const Button = ({ text, onClick }: Props) => {
   return (
     <button className="Button" onClick={onClick}>
       {text}

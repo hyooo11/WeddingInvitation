@@ -8,7 +8,10 @@ const Main = () => {
       </figure>
       <div className="greeting">
         <div className="inner">
-          <div className="h2 font-bold">{data.greeting.title}</div>
+          <div className="h2">
+            <p className="eng">greetings</p>
+            <p className="tit">{data.greeting.title}</p>
+          </div>
           <div className="message">{data.greeting.message}</div>
         </div>
       </div>

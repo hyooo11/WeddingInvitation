@@ -15,24 +15,25 @@ const Account = () => {
   //   setIsOpen(!isOpen);
   // };
   return (
-    <div>
+    <div className="inner Account">
       <Accordion>
         {data.hostInfo.map((data, index) => {
           return (
-            <AccordionItem title={`${data.host} 계좌번호`}>
+            <AccordionItem key={index} title={`${data.host} 계좌번호`}>
               <div>
                 {data.accountInfo.map((data, index) => {
                   return (
-                    <>
+                    <div key={index} className="item">
                       <div>
-                        <span>{data.relation}</span>
-                        <span>{data.name}</span>
+                        <span>{data.relation} {data.name}</span>
                       </div>
-                      <div>
-                        <span>{data.bank}</span>
-                        <span>{data.account}</span>
+                      <div className="account_box">
+                        <p>
+                          <span>{data.bank} | {data.account}</span>
+                          <button>계좌복사하기</button>
+                        </p>
                       </div>
-                    </>
+                    </div>
                   );
                 })}
               </div>
