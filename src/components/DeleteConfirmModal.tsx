@@ -47,10 +47,10 @@ const DeleteConfirmModal: React.FC<Props> = ({ isOpen, onClose, onConfirm }) => 
           />
           {error && <p className="error_txt">{error}</p>}
           <div className="modal-actions">
-            <button type="submit">삭제</button>
             <button type="button" onClick={onClose}>
               취소
             </button>
+            <button type="submit">삭제</button>
           </div>
         </form>
       </div>

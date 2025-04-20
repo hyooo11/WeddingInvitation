@@ -39,15 +39,15 @@ const Shared = () => {
         objectType: "text",
         text: "동현💛진희의 결혼식에 초대합니다!",
         link: {
-          mobileWebUrl: "https://wedding-invitation-umber-phi.vercel.app/",
-          webUrl: "https://wedding-invitation-umber-phi.vercel.app/",
+          mobileWebUrl: "https://wedding-invitation-umber-phi.vercel.app",
+          webUrl: "https://wedding-invitation-umber-phi.vercel.app",
         },
         buttons: [
           {
             title: "청첩장 보기",
             link: {
-              mobileWebUrl: "https://wedding-invitation-umber-phi.vercel.app/",
-              webUrl: "https://wedding-invitation-umber-phi.vercel.app/",
+              mobileWebUrl: "https://wedding-invitation-umber-phi.vercel.app",
+              webUrl: "https://wedding-invitation-umber-phi.vercel.app",
             },
           },
         ],
