@@ -565,12 +565,12 @@ textarea:focus {
 .toast {
   background-color: #89757a;
   position: fixed;
-  bottom: 2rem;
+  bottom: 3rem;
   padding: 10px 5px;
   border-radius: 5px;
   text-align: center;
-  left: 20px;
-  right: 20px;
+  left: 3rem;
+  right: 3rem;
   font-size: 0.8rem;
   z-index: 9;
 }
