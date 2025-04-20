@@ -4,6 +4,9 @@ import { getGeoCode } from "@/api/GeoCodeAPI";
 import Button from "@/components/Button";
 import CopyToClipboard from "@/util/CopyToClipboard";
 import data from "@/data.json";
+import { SiNaver } from "react-icons/si";
+import { SiKakao } from "react-icons/si";
+import { BsChatFill } from "react-icons/bs";
 
 const Location = () => {
   const [lat, setLat] = useState<number>();
@@ -28,10 +31,11 @@ const Location = () => {
     });
   }, []);
 
-  const openMapNaver = () => {
-    const url = `http://map.naver.com/index.nhn?enc=utf8&level=2&lng=${lng}&lat=${lat}&pinTitle=MJ컨벤션&pinType=SITE`;
-    window.open(url);
-  };
+
+  const openMap = {
+    naver: () => window.open(`http://map.naver.com/index.nhn?enc=utf8&level=2&lng=${lng}&lat=${lat}&pinTitle=MJ컨벤션&pinType=SITE`),
+    kakao: () => window.open(`https://map.kakao.com/?urlX=455447.999999999&urlY=1106257.9999999981&urlLevel=3&itemId=27339651&q=MJ%EC%BB%A8%EB%B2%A4%EC%85%98&srcid=27339651&map_type=TYPE_MAP`)
+  }
 
   return (
     <div className="Location">
@@ -42,10 +46,19 @@ const Location = () => {
         </div>
         <p className="hollymolly">MJ컨벤션 3층 다이너스티홀</p>
         <CopyToClipboard text="경기도 부천시 소사구 소사본동 65-7(경인로 386)" />
-      </div>
-      <div id="map" style={{ height: "200px" }}></div>
-      <Button type="button" text={"네이버 지도에서 보기"} onClick={openMapNaver} />
-      <div className="inner">
+
+        <div id="map" style={{ height: "200px" }}></div>
+        <div className="map_btn_area">
+          <button onClick={openMap.naver} className="naver">
+            <span className="icon"><SiNaver /></span>
+            <span className="btn">네이버 지도에서 보기</span>
+          </button>
+          <button onClick={openMap.kakao} className="kakao">
+            <span className="icon"><BsChatFill /></span>
+            <span className="btn">카카오 지도에서 보기</span>
+          </button>
+        </div>
+
         <ul className="desc">
           <li>
             <h3>지하철 이용 시</h3>

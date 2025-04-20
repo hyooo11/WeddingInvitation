@@ -14,7 +14,7 @@ import "swiper/css/thumbs";
 // import "./styles.css";
 
 // import required modules
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { FreeMode, Navigation, Thumbs, Autoplay } from "swiper/modules";
 
 const Gallery = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
@@ -30,8 +30,12 @@ const Gallery = () => {
           spaceBetween={10}
           // navigation={true}
           thumbs={{ swiper: thumbsSwiper }}
-          modules={[FreeMode, Navigation, Thumbs]}
+          modules={[FreeMode, Navigation, Thumbs, Autoplay]}
           className="MainSwiper"
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
         >
           {data.gallery.map((data, index) => {
             return (

@@ -2,7 +2,6 @@
 import { ReactNode, useState } from "react";
 import { Accordion, AccordionItem } from "@/components/Accordion";
 import data from "@/data.json";
-import Link from "next/link";
 import Toast from "@/components/Toast";
 import { useToast } from "@/hook/useToast";
 

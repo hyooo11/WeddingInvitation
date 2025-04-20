@@ -10,75 +10,69 @@ import {
   eachDayOfInterval,
   isSaturday,
   isSunday,
-  differenceInDays,
-  differenceInHours,
-  differenceInMinutes,
-  differenceInSeconds,
-  sub,
+  isSameDay,
+  parseISO,
 } from "date-fns";
 import { ko } from "date-fns/locale";
 import { FaHeart } from "react-icons/fa6";
 
 const Calendar = () => {
-  const [currentDate, setCurrentDate] = useState(new Date()); // 현재 날짜
-  const [targetDate, setTargetDate] = useState(new Date(data.weddingInfo.date)); //결혼식 디데이
-  const [count, setCount] = useState('')
+  const targetDate = parseISO(data.weddingInfo.date); // 결혼식 날짜
+
+  const [day, setDay] = useState(0);
+  const [hour, setHour] = useState(0);
+  const [min, setMin] = useState(0);
+  const [sec, setSec] = useState(0);
 
   const dday = format(targetDate, `yyyy. MM. dd`);
   const time = format(targetDate, `a h시 m분`, { locale: ko });
 
-  const monthStart = startOfMonth(targetDate); // 현재 달의 시작 날짜 (2023-08-01)
-  const monthEnd = endOfMonth(monthStart); // 현재 달의 마지막 날짜 (2023-08-31)
-  const startDate = startOfWeek(monthStart, { weekStartsOn: 0 }); // 현재 달의 첫 주 시작 날짜 (2023-07-30)
-  const endDate = endOfWeek(monthEnd, { weekStartsOn: 0 }); // 현재 달의 마지막 주 마지막 날짜 (2023-09-02)
+  const monthStart = startOfMonth(targetDate);
+  const monthEnd = endOfMonth(monthStart);
+  const startDate = startOfWeek(monthStart, { weekStartsOn: 0 });
+  const endDate = endOfWeek(monthEnd, { weekStartsOn: 0 });
+
   const week = ["일", "월", "화", "수", "목", "금", "토"];
 
-  const days = eachDayOfInterval({
-    start: startDate,
-    end: endDate,
-  });
+  const days = eachDayOfInterval({ start: startDate, end: endDate });
 
   const daysInMonth = days.map((day) => ({
     day: format(day, "dd"),
-    isDDay: format(targetDate, "dd") !== format(day, "dd") ? false : true,
+    isDDay: isSameDay(day, targetDate),
     issunday: isSunday(day),
     isSaturday: isSaturday(day),
-    rest: format(targetDate, "MM") !== format(day, "MM") ? true : false,
+    rest: format(targetDate, "MM") !== format(day, "MM"),
   }));
 
-  // 실시간 업데이트를 위한 useEffect
+  // 🔥 초까지 포함된 실시간 카운트다운 useEffect
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentDate(new Date());
+      const now = new Date();
+      const diff = targetDate.getTime() - now.getTime(); // 남은 시간 (ms)
+
+      if (diff <= 0) {
+        setDay(0);
+        setHour(0);
+        setMin(0);
+        setSec(0);
+        return;
+      }
+
+      const totalSeconds = Math.floor(diff / 1000);
+
+      const d = Math.floor(totalSeconds / (3600 * 24));
+      const h = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+      const m = Math.floor((totalSeconds % 3600) / 60);
+      const s = totalSeconds % 60;
+
+      setDay(d);
+      setHour(h);
+      setMin(m);
+      setSec(s);
     }, 1000);
-    return () => clearInterval(timer); // 컴포넌트 언마운트 시 타이머 제거
-  }, []);
 
-  const daysRemaining = differenceInDays(targetDate, currentDate);
-  const hoursRemaining = differenceInHours(
-    sub(targetDate, { days: daysRemaining }),
-    currentDate
-  );
-  const minutesRemaining = differenceInMinutes(
-    sub(targetDate, { days: daysRemaining, hours: hoursRemaining }),
-    currentDate
-  );
-  const secondsRemaining = differenceInSeconds(
-    sub(targetDate, {
-      days: daysRemaining,
-      hours: hoursRemaining,
-      minutes: minutesRemaining,
-    }),
-    currentDate
-  );
-
-
-
-  useEffect(() => {
-    setCount(`${daysRemaining}일 ${hoursRemaining}시간 ${minutesRemaining}분 ${secondsRemaining}초`)
-  }, [daysRemaining, hoursRemaining, minutesRemaining, secondsRemaining])
-
-
+    return () => clearInterval(timer);
+  }, [targetDate]);
 
   return (
     <div className="Calendar">
@@ -90,57 +84,58 @@ const Calendar = () => {
 
         <div className="body">
           <div className="week">
-            {week.map((data, index) => {
-              return <span key={index} className={data === '일' ? 'sun' : ''}>{data}</span>;
-            })}
+            {week.map((data, index) => (
+              <span key={index} className={data === "일" ? "sun" : ""}>
+                {data}
+              </span>
+            ))}
           </div>
           <div className="day">
-            {daysInMonth.map((data, index) => {
-              return (
-                <span
-                  className={
-                    data.isDDay
-                      ? "dday"
-                      : data.rest
-                        ? "rest"
-                        : data.issunday
-                          ? "sun"
-                          : data.isSaturday
-                            ? "satur"
-                            : "default"
-                  }
-                  key={index}
-                >
-                  {data.day}
-                </span>
-              );
-            })}
+            {daysInMonth.map((data, index) => (
+              <span
+                key={index}
+                className={
+                  data.isDDay
+                    ? "dday"
+                    : data.rest
+                      ? "rest"
+                      : data.issunday
+                        ? "sun"
+                        : data.isSaturday
+                          ? "satur"
+                          : "default"
+                }
+              >
+                {data.day}
+              </span>
+            ))}
           </div>
         </div>
+
         <div>
           <div className="time_panel">
             <div className="item">
-              <p className="num">{daysRemaining}</p>
+              <p className="num">{day}</p>
               <p className="txt">Days</p>
             </div>
             <span>:</span>
             <div className="item">
-              <p className="num">{hoursRemaining}</p>
+              <p className="num">{hour}</p>
               <p className="txt">Hour</p>
             </div>
             <span>:</span>
             <div className="item">
-              <p className="num">{minutesRemaining}</p>
+              <p className="num">{min}</p>
               <p className="txt">Min</p>
             </div>
             <span>:</span>
             <div className="item">
-              <p className="num">{secondsRemaining}</p>
+              <p className="num">{sec}</p>
               <p className="txt">Sec</p>
             </div>
           </div>
           <div className="dday_text">
-            동현<FaHeart />진희의 결혼식이 {daysRemaining}일 남았습니다.
+            동현<FaHeart />진희의 결혼식이 {day}일 남았습니다.
           </div>
         </div>
       </div>
