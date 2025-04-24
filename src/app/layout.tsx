@@ -8,8 +8,10 @@ export const metadata: Metadata = {
   description: "노동현 ♥ 박진희의 모바일 청첩장",
   viewport: {
     width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1
+    initialScale: 1.0,
+    maximumScale: 1.0,
+    minimumScale: 1.0,
+    userScalable: false
   }
 };
 
