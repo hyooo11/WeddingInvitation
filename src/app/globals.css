@@ -118,6 +118,7 @@
 
 html {
   font-size: 14px;
+  touch-action: manipulation;
 }
 
 input::placeholder,
