@@ -123,7 +123,7 @@ html {
 
 input::placeholder,
 textarea::placeholder {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 body {
@@ -170,6 +170,7 @@ textarea {
   padding: 0.5rem;
   border: 1px solid #efefef;
   border-radius: 5px;
+  font-size: 16px;
 }
 
 .error_txt {
@@ -178,7 +179,6 @@ textarea {
   text-align: left;
   padding-top: 5px;
 }
-
 
 textarea {
   resize: none;
